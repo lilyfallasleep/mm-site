@@ -1,0 +1,9 @@
+/* Adjust font size only for the main content of posts and pages */
+.archive__item-excerpt,
+.page__content {
+  font-size: 15px; 
+}
+
+.fa-flickr {
+  color: inherit !important;
+}
