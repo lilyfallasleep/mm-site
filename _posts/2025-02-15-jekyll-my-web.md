@@ -574,6 +574,61 @@ main:
 
 使用 [RealFavIconGenerator](https://realfavicongenerator.net/) 產生符合標準的圖片，並放入圖片資料夾 /assets/images/favicons/
 
+新增檔案 /_includes/head/custom.html，將以上網頁產生內容貼入
+```html
+<!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+<link rel="icon" type="image/png" href="/assets/favicon/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="/assets/favicon/favicon.svg" />
+<link rel="shortcut icon" href="/assets/favicon/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png" />
+<meta name="apple-mobile-web-app-title" content="MyWebSite" />
+<link rel="manifest" href="/site.webmanifest" />
+
+<link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
+<!-- end custom head snippets -->
+```
+
+### Why 分頁顯示不出 logo?
+
+⚠️ 使用以上 custom.html 會出現以下錯誤
+
+**本地環境 (http://localhost:4000`/mm-site`)**
+
+- 錯誤：http://localhost:4000`/assets/favicon/favicon-96x96.png` → 載入失敗
+- 正確應為： ****http://localhost:4000**`/mm-site**/assets/favicon/favicon-96x96.png`
+
+**GitHub Pages (https://lilyfallasleep.github.io`/mm-site/`)**
+
+- 錯誤：https://lilyfallasleep.github.io`/assets/favicon/favicon-96x96.png` → 載入失敗
+- 正確應為：https://lilyfallasleep.github.io**`/mm-site**/assets/favicon/favicon-96x96.png`
+
+當_config.yaml 有設定 baseurl 時，程式內的 URL 根目錄沒多補上baseurl 導致路徑錯誤
+
+ex. 我們設定 Github Page url: https://lilyfallasleep.github.io/mm-site/, baseurl: /mm-site
+
+Jekyll 不會自動在所有路徑前面加上 baseurl，因為可能會破壞某些路徑，需交由開發者手動處理
+
+### 如何正確處理 baseurl？
+
+使用 Jekyll 內建的 relative_url，自動判斷 `baseurl` 是否存在並補上
+
+```html
+<!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+<link rel="icon" type="image/png" href="{{ '/assets/favicon/favicon-96x96.png' | **relative_url** }}" sizes="96x96"/>
+<link rel="icon" type="image/svg+xml" href="{{ '/assets/favicon/favicon.svg' | **relative_url** }}" />
+<link rel="shortcut icon" href="{{ '/assets/favicon/favicon.ico' | **relative_url** }}" />
+<link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/favicon/apple-touch-icon.png' | **relative_url** }}" />
+<meta name="apple-mobile-web-app-title" content="MyWebSite" />
+<link rel="manifest" href="/site.webmanifest" />
+
+<link rel="stylesheet" href="{{ '/assets/css/custom.css' | **relative_url** }}">
+<!-- end custom head snippets -->
+```
+
 ## 💡YAML 中，如何換行、空格？:** 
 **換行**
 解析前  
@@ -608,6 +663,53 @@ main:
 {: .notice}
 
 ---
+
+# Github Page
+
+https://www.youtube.com/watch?v=EmSrQCDsMv4&t=222s
+
+- URL = https://<username>.github.io/專案名稱”
+    
+    如果要做為Project專用網頁，branch 預設可為 `master`，並設置 baseurl
+    
+
+在 _config.yaml 新增 baseurl, url
+
+```bash
+title: LILY LIN
+logo : "/assets/favicon/favicon-96x96.png"
+email:
+description: >- # this means to ignore newlines until "baseurl:"
+  Write an awesome description for your new site here. You can edit this
+  line in _config.yml. It will appear in your document head meta (for
+  Google search results) and in your feed.xml site description.
+baseurl: "/mm-site" # the subpath of your site, e.g. /blog
+url: "https://lilyfallasleep.github.io" # the base hostname & protocol for your site
+```
+
+### Step1. Create a new repository
+
+### Step2. Setting
+
+repo 建立好後，點選 Setting 進行 Github Page 相關設定 
+
+Settings → Pages → Branch → `(main/root)`  → Save
+
+
+### Step3. git push
+
+回到自己的 VSCode，輸入以下指令
+
+```bash
+# 1.  初始化本地 git repo
+git init
+# 2. 將 Local git repo 連結到 GitHub remot repo
+git remote add origin https://github.com/lilyfallasleep/mm-site.git
+# 3. push 至 master
+git add .
+git commit -m "first commit"
+git push -u origin main
+```
 
 ## Reference
 
