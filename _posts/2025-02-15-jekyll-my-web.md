@@ -88,7 +88,7 @@ bundle exec jekyll serve
 
 (二) Browse to [http://localhost:4000](http://localhost:4000/)
 
-用瀏覽器打開[localhost:4000](https://localhost:4000/)就可以看到你的網站現在的外觀
+用瀏覽器打開 [localhost:4000](https://localhost:4000/) 就可以看到你的網站現在的外觀
 
 ## Option2. 使用現成的 **Jekyll 網站**
 
@@ -291,8 +291,8 @@ bundle exec jekyll serve 後，Jekyll 會將以上來源檔案生成一包『_si
 
 **用途**：向訪客介紹關於自己，ex. 網站`title` , `description`, 連接其他社群 (twitter, github)
 
-- 查看 HTML 文件，可透過 {{ site.title }}、{{ site.email }} 存取
-- **可建立任何自訂 variable，在模板中透過 {{ site.myvariable }} 訪問**
+- 查看 HTML 文件，可透過 `{{ site.title }}`、`{{ site.email }`} 存取
+- **可建立任何自訂 variable，在模板中透過 `{{ site.myvariable }}` 訪問**
 
 **參數**
 
@@ -309,7 +309,7 @@ bundle exec jekyll serve 後，Jekyll 會將以上來源檔案生成一包『_si
 - `markdown`: kramdown 用於 Markdown 轉換
 - `remote_theme`：選用主題名稱
 - `permalink`: /:categories/:title/ (預設永久連結樣式)
-    - 文章 title: [2016-01-01-my-post.md](http://2016-01-01-my-post.md/), 文章 categories: foo
+    - 文章 title: 2016-01-01-my-post.md, 文章 categories: foo
     - 永久連結: _site/foo/my-post/index.html
 - `paginate`：每頁最多顯示貼文數目
 - `timezone`：時區環境變量，Ruby 使用它來處理時間和日期，預設值是您 OS 設定的本地時區
@@ -318,7 +318,7 @@ bundle exec jekyll serve 後，Jekyll 會將以上來源檔案生成一包『_si
 
 **用途**：告訴 Jekyll 要強制處理原本會因為命名規則而被忽略的檔案或資料夾，以被包含在網站 build 的過程中，才能被處理並輸出到最終網站顯示
 
-**include**: - _pages
+**include**: _pages
 
 - 資料夾名稱以底線開頭：依照 Jekyll 的規則，它會被忽略，不會被處理成網頁
 - _pages 資料夾：存放非部落格文章、自訂的頁面，ex. About、Home、Category、Tags …
@@ -332,7 +332,7 @@ bundle exec jekyll serve 後，Jekyll 會將以上來源檔案生成一包『_si
 
 ### (5) Plugins (外掛)
 
-**用途**：使用 GitHub Pages 託管時，主題使用了其中的幾個出網站建置時要啟用的外掛插件 (gem)
+**用途**：使用 GitHub Pages 託管時，主題使用了其中的幾個網站建置時要啟用的外掛插件 (gem)
 
 | Plugins | Description |
 | --- | --- |
@@ -401,7 +401,7 @@ bundle exec jekyll serve 後，Jekyll 會將以上來源檔案生成一包『_si
 
 ## 如何設定頁面的 URL
 
-**用途**：讓使用者能夠在指定的 URL 看到輸出的 index.tml 頁面
+**用途**：讓使用者能夠在指定的 URL 看到輸出的 index.html 頁面
 
 - **預設**：Minimal Mistakes 主題於 _config.yaml 只有內建 category_archive 和 tag_archive，可透過 path 設定 URL，不需額外至 _pages/category-archive.md 和 _pages/tag-archive.md 設定 permalink
     
@@ -597,12 +597,12 @@ main:
 **本地環境 (http://localhost:4000`/mm-site`)**
 
 - 錯誤：http://localhost:4000`/assets/favicon/favicon-96x96.png` → 載入失敗
-- 正確應為： ****http://localhost:4000**`/mm-site**/assets/favicon/favicon-96x96.png`
+- 正確應為： http://localhost:4000`/mm-site/assets/favicon/favicon-96x96.png`
 
 **GitHub Pages (https://lilyfallasleep.github.io`/mm-site/`)**
 
 - 錯誤：https://lilyfallasleep.github.io`/assets/favicon/favicon-96x96.png` → 載入失敗
-- 正確應為：https://lilyfallasleep.github.io**`/mm-site**/assets/favicon/favicon-96x96.png`
+- 正確應為：https://lilyfallasleep.github.io`/mm-site/assets/favicon/favicon-96x96.png`
 
 當_config.yaml 有設定 baseurl 時，程式內的 URL 根目錄沒多補上baseurl 導致路徑錯誤
 
@@ -618,9 +618,9 @@ Jekyll 不會自動在所有路徑前面加上 baseurl，因為可能會破壞
 <!-- start custom head snippets -->
 
 <!-- insert favicons. use https://realfavicongenerator.net/ -->
-<link rel="icon" type="image/png" href="{{ '/assets/favicon/favicon-96x96.png' | **relative_url** }}" sizes="96x96"/>
-<link rel="icon" type="image/svg+xml" href="{{ '/assets/favicon/favicon.svg' | **relative_url** }}" />
-<link rel="shortcut icon" href="{{ '/assets/favicon/favicon.ico' | **relative_url** }}" />
+<link rel="icon" type="image/png" href="{{ '/assets/favicon/favicon-96x96.png' | relative_url }}" sizes="96x96"/>
+<link rel="icon" type="image/svg+xml" href="{{ '/assets/favicon/favicon.svg' | relative_url }}" />
+<link rel="shortcut icon" href="{{ '/assets/favicon/favicon.ico' | relative_url }}" />
 <link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/favicon/apple-touch-icon.png' | **relative_url** }}" />
 <meta name="apple-mobile-web-app-title" content="MyWebSite" />
 <link rel="manifest" href="/site.webmanifest" />
@@ -668,9 +668,9 @@ Jekyll 不會自動在所有路徑前面加上 baseurl，因為可能會破壞
 
 https://www.youtube.com/watch?v=EmSrQCDsMv4&t=222s
 
-- URL = https://<username>.github.io/專案名稱”
+- URL = https://<username>.github.io/專案名稱
     
-    如果要做為Project專用網頁，branch 預設可為 `master`，並設置 baseurl
+    如果要做為 Project 專用網頁，branch 預設可為 `master`，並設置 baseurl
     
 
 在 _config.yaml 新增 baseurl, url
