@@ -296,7 +296,7 @@ bundle exec jekyll serve 後，Jekyll 會將以上來源檔案生成一包『_si
 
 **參數**
 
-- `title`：定義網站 `title` (網站標題)
+- `title`：定義網站 title (網站標題)
 - `description`：定義網站描述，協助 SEO(搜尋引擎優化)
 - `minimal_mistakes_skin`：選擇主題 background color，包含 https://mmistakes.github.io/minimal-mistakes/docs/configuration/
 - `logo`：在網站 title 前插入徽標，將圖形放在`/assets/images/`目錄中，並將檔案名稱新增至此
