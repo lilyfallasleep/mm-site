@@ -291,7 +291,7 @@ bundle exec jekyll serve 後，Jekyll 會將以上來源檔案生成一包『_si
 
 **用途**：向訪客介紹關於自己，ex. 網站`title` , `description`, 連接其他社群 (twitter, github)
 
-- 查看 HTML 文件，可透過 `{{ site.title }}`、`{{ site.email }`} 存取
+- 查看 HTML 文件，可透過 {% raw %}`{{ site.title }}`、`{{ site.email }}`{% endraw %} 存取
 - **可建立任何自訂 variable，在模板中透過 `{{ site.myvariable }}` 訪問**
 
 **參數**
@@ -621,11 +621,11 @@ Jekyll 不會自動在所有路徑前面加上 baseurl，因為可能會破壞
 <link rel="icon" type="image/png" href="{{ '/assets/favicon/favicon-96x96.png' | relative_url }}" sizes="96x96"/>
 <link rel="icon" type="image/svg+xml" href="{{ '/assets/favicon/favicon.svg' | relative_url }}" />
 <link rel="shortcut icon" href="{{ '/assets/favicon/favicon.ico' | relative_url }}" />
-<link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/favicon/apple-touch-icon.png' | **relative_url** }}" />
+<link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/favicon/apple-touch-icon.png' | relative_url }}" />
 <meta name="apple-mobile-web-app-title" content="MyWebSite" />
 <link rel="manifest" href="/site.webmanifest" />
 
-<link rel="stylesheet" href="{{ '/assets/css/custom.css' | **relative_url** }}">
+<link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
 <!-- end custom head snippets -->
 ```
 
